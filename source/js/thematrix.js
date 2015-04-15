@@ -43,9 +43,9 @@ var killWhenDone = (elem, length) => {
 var getNormalizedLeft = (text) => {
   var i = parseInt(text.substring(0, 2), 16);
 
-  i = i || 0;
+  i = i || Math.floor(Math.random() * 16);
   i = i * width/256;
-  i += Math.random() * 30;
+  i += Math.random() * 40;
   i = Math.floor(i);
 
   return i;
@@ -53,12 +53,15 @@ var getNormalizedLeft = (text) => {
 
 var createCol = (text) => {
   var col = $('<div/>').addClass('col');
+  var z = Math.floor(Math.random() * 4);
 
   text.split('').forEach(c => col.append(createChar(c)));
 
   col.css({
     left: getNormalizedLeft(text),
-    top: Math.floor(Math.random() * height * 0.66)
+    top: Math.floor(Math.random() * height * 0.66),
+    'z-index': z,
+    transform: `scale(${1/4*3 + z/4})`
   });
 
   killWhenDone(col, text.length);
