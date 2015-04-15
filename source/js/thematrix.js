@@ -23,7 +23,7 @@ var createCol = (text) => {
 
   col.css({
     left: Math.floor(Math.random() * width),
-    top: Math.floor(Math.random() * height)
+    top: Math.floor(Math.random() * height * 0.66)
   });
 
   killWhenDone(col, text.length);
