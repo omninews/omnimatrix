@@ -1,7 +1,8 @@
 'use strict';
 
-var socket = new WebSocket('ws://localhost:8080');
 var thematrix = require('./thematrix');
+var blips = require('./blips');
+var socket = new WebSocket('ws://localhost:8080');
 var allowedMessages = ['LoadArticle', 'pageview', 'articleseen'];
 
 socket.onmessage = (e) => {
@@ -9,6 +10,7 @@ socket.onmessage = (e) => {
 
   if(allowedMessages.indexOf(data[0]) > -1) {
     thematrix.draw(data);
+    blips.blip();
   }
 };
 
