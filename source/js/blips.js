@@ -3,7 +3,7 @@
 var howler = require('howler');
 
 var blip = new howler.Howl({
-  urls: ['../sounds/blip.wav']
+  urls: ['../sounds/laser.wav']
 });
 
 exports.blip = () => {
