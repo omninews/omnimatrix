@@ -10,7 +10,7 @@ socket.onmessage = (e) => {
 
   if(allowedMessages.indexOf(data[0]) > -1) {
     thematrix.draw(data);
-    blips.blip();
+    blips.blip(data[0]);
   }
 };
 
