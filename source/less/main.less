@@ -1,0 +1,70 @@
+body {
+  background-color: #000;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.thematrix {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  color: #090;
+}
+
+.col {
+  display: block;
+  width:1px;
+  margin-right: 20px;
+  float: left;
+  position: absolute;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+  white-space: pre;
+  word-wrap: break-word;
+}
+
+.char {
+  opacity: 0;
+}
+
+@interval: 40ms;
+@visible-for: 2000ms;
+
+.animate-char (@n) when (@n > -1) {
+  .animate-char(@n - 1);
+
+  .char:nth-child(@{n}) {
+    -webkit-animation:
+      fade (@visible-for) linear (@n * @interval) 1;
+  }
+}
+
+.animate-char(100);
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+    color: #dfd;
+  }
+  1% {
+    opacity: 1;
+    color: #dfd;
+  }
+  5% {
+    opacity: 1;
+    color: #090;
+  }
+  97% {
+    opacity: 1;
+    color: #090;
+  }
+  100% {
+    opacity: 0;
+    color: #090;
+  }
+}
