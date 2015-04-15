@@ -5,6 +5,30 @@ var thematrix = $('#thematrix');
 var width = thematrix.width();
 var height = thematrix.height();
 
+var requestFullscreen = (elem) => {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  } else if (elem.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  }
+  else {
+    throw new TypeError('Element has not method requestFullscreen');
+  }
+};
+
+$(window).on('resize', () => {
+  width = thematrix.width();
+  height = thematrix.height();
+});
+
+thematrix.on('click', () => {
+  requestFullscreen(thematrix.get(0));
+});
+
 var createChar = (text) => {
   return $('<div/>').addClass('char').text(text);
 };
