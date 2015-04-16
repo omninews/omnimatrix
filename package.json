@@ -2,17 +2,16 @@
   "name": "omni-matrix",
   "version": "1.0.0",
   "description": "",
-  "main": "bin/start-listener",
+  "main": "bin/start-all-in-one",
   "dependencies": {
     "babel": "^5.1.9",
     "bluebird": "^2.9.24",
     "dotenv": "^1.1.0",
+    "express": "^4.12.3",
     "howler": "^1.1.25",
     "nconf": "^0.7.1",
     "pg": "^4.3.0",
-    "ws": "^0.7.1"
-  },
-  "devDependencies": {
+    "ws": "^0.7.1",
     "http-server": "^0.8.0",
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
@@ -27,10 +26,14 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
+  "devDependencies": {
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "listen": "babel-node .",
-    "broadcast": "babel-node bin/broadcast"
+    "start": "babel-node .",
+    "listen": "babel-node bin/start-listener",
+    "broadcast": "babel-node bin/broadcast",
+    "postinstall": "gulp build"
   },
   "author": "Andreas Hultgren",
   "license": "ISC"
