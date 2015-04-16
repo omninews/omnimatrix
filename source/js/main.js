@@ -3,7 +3,8 @@
 var thematrix = require('./thematrix');
 var blips = require('./blips');
 var port = document.location.port ? ':' + document.location.port : '';
-var socket = new WebSocket(`ws://${document.location.hostname}${port}`);
+var scheme = document.location.protocol === 'http:' ? 'ws:' : 'wss:';
+var socket = new WebSocket(`${scheme}//${document.location.hostname}${port}`);
 var allowedMessages = ['LoadArticle', 'pageview', 'articleseen'];
 
 socket.onmessage = (e) => {
